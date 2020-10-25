@@ -31,8 +31,8 @@ public class TeknisiModel implements Serializable {
     private String no_telepon;
 
     //    Relationship
-    @ManyToMany(mappedBy = "listTeknisi")
-    private List<PesawatModel> listPesawat;
+//    @ManyToMany(mappedBy = "listTeknisi")
+//    private List<PesawatModel> listPesawat;
 
     @OneToMany(mappedBy = "teknisi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PesawatTeknisiModel> listPesawatTeknisi;
@@ -61,13 +61,6 @@ public class TeknisiModel implements Serializable {
         this.no_telepon = no_telepon;
     }
 
-    public List<PesawatModel> getListPesawat() {
-        return listPesawat;
-    }
-
-    public void setListPesawat(List<PesawatModel> listPesawat) {
-        this.listPesawat = listPesawat;
-    }
 
     public List<PesawatTeknisiModel> getListPesawatTeknisi() {
         return listPesawatTeknisi;

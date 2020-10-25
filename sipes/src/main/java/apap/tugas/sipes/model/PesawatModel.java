@@ -55,25 +55,6 @@ public class PesawatModel implements Serializable {
     @JsonIgnore
     private TipeModel tipe;
 
-//    @ManyToMany(cascade = {
-//            // CascadeType.PERSIST,
-//            CascadeType.MERGE
-//    })
-//    @JoinTable(name = "pesawat_teknisi",
-//            joinColumns = @JoinColumn(name = "id_pesawat"),
-//            inverseJoinColumns = @JoinColumn(name = "id_teknisi")
-//    )
-//    private List<TeknisiModel> listTeknisi;
-//
-////    Getter Setter
-//    public List<TeknisiModel> getListTeknisi() {
-//        return this.listTeknisi;
-//    }
-//
-//    public void setListTeknisi(List<TeknisiModel> listTeknisi) {
-//        this.listTeknisi = listTeknisi;
-//    }
-
     @OneToMany(mappedBy = "pesawat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PesawatTeknisiModel> listPesawatTeknisi;
 
