@@ -35,7 +35,7 @@ public class PenerbanganModel implements Serializable {
 
     @NotNull
     @Size(max = 255)
-    @Column(name = "nomor_penerbangan", nullable = false)
+    @Column(name = "nomor_penerbangan", nullable = false, unique = true)
     private String nomor_penerbangan;
 
 //    Relationship

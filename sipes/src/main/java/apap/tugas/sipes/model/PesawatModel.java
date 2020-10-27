@@ -27,7 +27,7 @@ public class PesawatModel implements Serializable {
 
     @NotNull
     @Size(max = 255)
-    @Column(name = "nomor_seri", nullable = false)
+    @Column(name = "nomor_seri", nullable = false, unique = true)
     private String nomor_seri;
 
     @NotNull

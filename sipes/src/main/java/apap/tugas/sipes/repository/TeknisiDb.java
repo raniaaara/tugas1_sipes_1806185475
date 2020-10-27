@@ -12,4 +12,3 @@ import java.util.Optional;
 public interface TeknisiDb extends JpaRepository<TeknisiModel,Long>{
     Optional<TeknisiModel> findById(Long id);
 }
-
