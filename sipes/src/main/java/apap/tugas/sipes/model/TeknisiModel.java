@@ -30,12 +30,12 @@ public class TeknisiModel implements Serializable {
     @Column(name = "no_telepon", nullable = false)
     private String no_telepon;
 
-    //    Relationship
-//    @ManyToMany(mappedBy = "listTeknisi")
-//    private List<PesawatModel> listPesawat;
+    //Relationship
+    @ManyToMany(mappedBy = "listTeknisi")
+    private List<PesawatModel> listPesawat;
 
-    @OneToMany(mappedBy = "teknisi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<PesawatTeknisiModel> listPesawatTeknisi;
+//    @OneToMany(mappedBy = "teknisi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<PesawatTeknisiModel> listPesawatTeknisi;
 
     public Long getId() {
         return id;
@@ -61,12 +61,12 @@ public class TeknisiModel implements Serializable {
         this.no_telepon = no_telepon;
     }
 
-
-    public List<PesawatTeknisiModel> getListPesawatTeknisi() {
-        return listPesawatTeknisi;
-    }
-
-    public void setListPesawatTeknisi(List<PesawatTeknisiModel> listPesawatTeknisi) {
-        this.listPesawatTeknisi = listPesawatTeknisi;
-    }
+//
+//    public List<PesawatTeknisiModel> getListPesawatTeknisi() {
+//        return listPesawatTeknisi;
+//    }
+//
+//    public void setListPesawatTeknisi(List<PesawatTeknisiModel> listPesawatTeknisi) {
+//        this.listPesawatTeknisi = listPesawatTeknisi;
+//    }
 }

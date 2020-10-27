@@ -39,9 +39,9 @@ public class PesawatController{
     @Autowired
     private PenerbanganService penerbanganService;
 
-    @Qualifier("pesawatTeknisiServiceImpl")
-    @Autowired
-    private PesawatTeknisiService pesawatTeknisiService;
+//    @Qualifier("pesawatTeknisiServiceImpl")
+//    @Autowired
+//    private PesawatTeknisiService pesawatTeknisiService;
 
 
     @GetMapping("/")
@@ -56,116 +56,114 @@ public class PesawatController{
         return "daftar-pesawat";
     }
 
-//    @GetMapping("/pesawat/add")
-//    public String addPesawatFormPage(Model model){
-//        PesawatModel pesawat = new PesawatModel();
-//        model.addAttribute("pesawat", pesawat);
-//
-//        List<TipeModel> listTipe = tipeService.getListTipe();
-//        List<TeknisiModel> allTeknisi = teknisiService.getListTeknisi();
-//        List<TeknisiModel> listTeknisi = new ArrayList<TeknisiModel>();
-//
-//        listTeknisi.add(new TeknisiModel());
-//        pesawat.setListTeknisi(listTeknisi);
-//
-//        model.addAttribute("listTipe", listTipe);
-//        model.addAttribute("listTeknisi", listTeknisi);
-//        model.addAttribute("allTeknisi", allTeknisi);
-//
-//        int jumlahtipe = listTipe.size();
-//        model.addAttribute("jumlahtipe", jumlahtipe);
-//
-//        return "form-add-pesawat";
-//    }
+    @GetMapping("/pesawat/add")
+    public String add_pesawat_form(Model model){
+        PesawatModel pesawat = new PesawatModel();
+        model.addAttribute("pesawat", pesawat);
 
-//
-//    @PostMapping("/pesawat/add")
-//    public String addPesawatSubmit(
-//            @ModelAttribute PesawatModel pesawat,
-//            Model model
-//    ){
-//        if (pesawat.getTanggal_dibuat() == null) {
-//            pesawat.setTanggal_dibuat(LocalDate.now());
-//        }
-//
-//        String ns = pesawatService.generateNoSeri(pesawat);
-//
-//        pesawat.setTipe(tipeService.getTipeById(pesawat.getTipe().getId()));
-//        pesawat.setNomor_seri(ns);
-//
-//        for(TeknisiModel tm: pesawat.getListTeknisi()){
-//            tm = teknisiService.getTeknisiById(tm.getId());
-//        }
-//
-//        pesawatService.addPesawat(pesawat);
-//        model.addAttribute("pesawat", pesawat);
-//        // model.addAttribute("id_tipe", idTipe);
-//
-//        return "add-pesawat";
-//    }
-//
-//    @PostMapping(value="/pesawat/add", params={"addteknisi"})
-//    public String addPesawatAddTeknisi(
-//            @ModelAttribute PesawatModel pesawat,
-//            Model model
-//    ){
-//        pesawat.getListTeknisi().add(new TeknisiModel());
-//        model.addAttribute("pesawat", pesawat);
-//
-//        List<TipeModel> listTipe = tipeService.getListTipe();
-//        List<TeknisiModel> allTeknisi = teknisiService.getListTeknisi();
-//        model.addAttribute("listTipe", listTipe);
-//        model.addAttribute("allTeknisi", allTeknisi);
-//
-//        return "form-add-pesawat";
-//    }
-//
-//    @GetMapping("/pesawat/view/{id}")
-//    public String viewPesawat(
-//            @PathVariable Long id,
-//            Model model
-//    ){
+        List<TipeModel> listTipe = tipeService.getListTipe();
+        List<TeknisiModel> allTeknisi = teknisiService.getListTeknisi();
+        List<TeknisiModel> listTeknisi = new ArrayList<TeknisiModel>();
+
+        listTeknisi.add(new TeknisiModel());
+        pesawat.setListTeknisi(listTeknisi);
+
+        model.addAttribute("listTipe", listTipe);
+        model.addAttribute("listTeknisi", listTeknisi);
+        model.addAttribute("allTeknisi", allTeknisi);
+
+        int jumlahtipe = listTipe.size();
+        model.addAttribute("jumlahtipe", jumlahtipe);
+
+        return "form-add-pesawat";
+    }
+
+    @PostMapping("/pesawat/add")
+    public String add_pesawat_submit(
+            @ModelAttribute PesawatModel pesawat,
+            Model model
+    ){
+        if (pesawat.getTanggal_dibuat() == null) {
+            pesawat.setTanggal_dibuat(LocalDate.now());
+        }
+
+        pesawat.setTipe(tipeService.getTipeById(pesawat.getTipe().getId()));
+
+        String no_seri = pesawatService.generateNoSeri(pesawat);
+        pesawat.setNomor_seri(no_seri);
+
+        System.out.println(pesawat.getListTeknisi().size());
+
+        for(TeknisiModel teknisi: pesawat.getListTeknisi()){
+            teknisi = teknisiService.getTeknisiById(teknisi.getId());
+        }
+
+        pesawatService.addPesawat(pesawat);
+        model.addAttribute("pesawat", pesawat);
+
+        return "add-pesawat";
+    }
+
+    @PostMapping(value="/pesawat/add", params={"addteknisi"})
+    public String add_pesawat_add_teknisi(
+            @ModelAttribute PesawatModel pesawat,
+            Model model
+    ){
+        List<TeknisiModel> allTeknisi = teknisiService.getListTeknisi();
+        pesawat.getListTeknisi().add(new TeknisiModel());
+        model.addAttribute("pesawat", pesawat);
+
+        List<TipeModel> listTipe = tipeService.getListTipe();
+        model.addAttribute("listTipe", listTipe);
+        model.addAttribute("allTeknisi", allTeknisi);
+
+        return "form-add-pesawat";
+    }
+
+    @GetMapping("/pesawat/view/{id}")
+    public String viewPesawat(
+            @PathVariable Long id,
+            Model model
+    ){
+            PesawatModel pesawat = pesawatService.getPesawatById(id);
+            List<TeknisiModel> listTeknisi = pesawat.getListTeknisi();
+
+            model.addAttribute("pesawat", pesawat);
+            model.addAttribute("listTeknisi", listTeknisi);
+
+            return "view-pesawat";
+    }
+
+
+    @GetMapping("/pesawat/update/{id}")
+    public String update_pesawat_form(
+            @PathVariable Long id,
+            Model model
+    ){
 //        try{
-//            PesawatModel pesawat = pesawatService.getPesawatById(id);
-//            List<TeknisiModel> listTeknisi = pesawat.getListTeknisi();
-//            String namatipe = pesawat.getTipe().getNama();
-//            model.addAttribute("pesawat", pesawat);
-//            model.addAttribute("listTeknisi", listTeknisi);
-//            model.addAttribute("namatipe", namatipe);
-//            return "view-pesawat";
-//
+            PesawatModel pesawat = pesawatService.getPesawatById(id);
+            model.addAttribute("pesawat", pesawat);
+            return "form-update-pesawat";
+
 //        }catch(Exception e){
 //            model.addAttribute("id", id);
 //            return "error";
 //        }
-//    }
-//
-//    @GetMapping("/pesawat/edit/{id}")
-//    public String editPesawatFormPage(
-//            @PathVariable Long id,
-//            Model model
-//    ){
-//        try{
-//            PesawatModel pesawat = pesawatService.getPesawatById(id);
-//            model.addAttribute("pesawat", pesawat);
-//            return "form-edit-pesawat";
-//
-//        }catch(Exception e){
-//            model.addAttribute("id", id);
-//            return "error";
-//        }
-//    }
-//
-//    @PostMapping("/pesawat/edit")
-//    public String editPesawatSubmit(
-//            @ModelAttribute PesawatModel pesawat,
-//            Model model
-//    ){
-//        PesawatModel pesawatUpdated = pesawatService.updatePesawat(pesawat);
-//        model.addAttribute("pesawat", pesawatUpdated);
-//        // model.addAttribute("pesawat", pesawat);
-//        return "update-pesawat";
-//    }
+    }
 
+    @PostMapping("/pesawat/update")
+    public String update_pesawat_submit(
+            @ModelAttribute PesawatModel pesawat,
+            Model model
+    ){
+        pesawat.setTipe(tipeService.getTipeById(pesawat.getTipe().getId()));
 
+        String no_seri = pesawatService.generateNoSeri(pesawat);
+        pesawat.setNomor_seri(no_seri);
+
+        PesawatModel pesawatUpdated = pesawatService.updatePesawat(pesawat);
+        model.addAttribute("pesawat", pesawatUpdated);
+        // model.addAttribute("pesawat", pesawat);
+        return "update-pesawat";
+    }
 }
