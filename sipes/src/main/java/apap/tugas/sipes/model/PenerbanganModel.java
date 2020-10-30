@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="penerbangan")
@@ -29,9 +30,9 @@ public class PenerbanganModel implements Serializable {
     private String kode_bandara_tujuan;
 
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "waktu_berangkat", nullable = false)
-    private LocalDate waktu_berangkat;
+    private LocalDateTime waktu_berangkat;
 
     @NotNull
     @Size(max = 255)
@@ -39,12 +40,11 @@ public class PenerbanganModel implements Serializable {
     private String nomor_penerbangan;
 
 //    Relationship
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_pesawat", referencedColumnName = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_pesawat", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private PesawatModel pesawat;
-
 
     public Long getId() {
         return id;
@@ -70,11 +70,11 @@ public class PenerbanganModel implements Serializable {
         this.kode_bandara_tujuan = kode_bandara_tujuan;
     }
 
-    public LocalDate getWaktu_berangkat() {
+    public LocalDateTime getWaktu_berangkat() {
         return waktu_berangkat;
     }
 
-    public void setWaktu_berangkat(LocalDate waktu_berangkat) {
+    public void setWaktu_berangkat(LocalDateTime waktu_berangkat) {
         this.waktu_berangkat = waktu_berangkat;
     }
 

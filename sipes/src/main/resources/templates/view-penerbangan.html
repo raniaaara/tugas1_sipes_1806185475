@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Detail Penerbangan</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+
+<nav th:replace="fragments/fragment :: navbar('View Detail Penerbangan')"></nav>
+<br>
+<h2>Detail Penerbangan</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nomor Penerbangan</th>
+        <th>Bandara Asal</th>
+        <th>Bandara Tujuan</th>
+        <th>Waktu Berangkat</th>
+<!--        <th>Nomor Seri Pesawat</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <td th:text="${penerbangan.nomor_penerbangan}"></td>
+    <td th:text="${penerbangan.kode_bandara_asal}"></td>
+    <td th:text="${penerbangan.kode_bandara_tujuan}"></td>
+    <td th:text="${penerbangan.waktu_berangkat}"></td>
+<!--    <td th:text="${penerbangan.id}"></td>-->
+    </tbody>
+</table>
+</body>
+</html>

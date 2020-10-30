@@ -55,17 +55,6 @@ public class PesawatModel implements Serializable {
     @JsonIgnore
     private TipeModel tipe;
 
-//    @OneToMany(mappedBy = "pesawat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private List<PesawatTeknisiModel> listPesawatTeknisi;
-//
-//    public List<PesawatTeknisiModel> getListPesawatTeknisi() {
-//        return listPesawatTeknisi;
-//    }
-//
-//    public void setListPesawatTeknisi(List<PesawatTeknisiModel> listPesawatTeknisi) {
-//        this.listPesawatTeknisi = listPesawatTeknisi;
-//    }
-
     @ManyToMany(cascade = {
             // CascadeType.PERSIST,
             CascadeType.MERGE
@@ -74,6 +63,7 @@ public class PesawatModel implements Serializable {
             joinColumns = @JoinColumn(name = "id_pesawat"),
             inverseJoinColumns = @JoinColumn(name = "id_teknisi")
     )
+    
     public List<TeknisiModel> listTeknisi;
 
     public List<TeknisiModel> getListTeknisi() {

@@ -92,8 +92,6 @@ public class PesawatController{
         String no_seri = pesawatService.generateNoSeri(pesawat);
         pesawat.setNomor_seri(no_seri);
 
-        System.out.println(pesawat.getListTeknisi().size());
-
         for(TeknisiModel teknisi: pesawat.getListTeknisi()){
             teknisi = teknisiService.getTeknisiById(teknisi.getId());
         }
@@ -121,7 +119,7 @@ public class PesawatController{
     }
 
     @GetMapping("/pesawat/view/{id}")
-    public String viewPesawat(
+    public String view_pesawat(
             @PathVariable Long id,
             Model model
     ){
@@ -162,8 +160,7 @@ public class PesawatController{
         pesawat.setNomor_seri(no_seri);
 
         PesawatModel pesawatUpdated = pesawatService.updatePesawat(pesawat);
-        model.addAttribute("pesawat", pesawatUpdated);
-        // model.addAttribute("pesawat", pesawat);
+        model.addAttribute("pesawatUpdated", pesawatUpdated);
         return "update-pesawat";
     }
 }

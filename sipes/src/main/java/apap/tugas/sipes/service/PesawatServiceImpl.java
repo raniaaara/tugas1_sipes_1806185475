@@ -38,24 +38,14 @@ public class PesawatServiceImpl implements PesawatService {
 
     @Override
     public PesawatModel updatePesawat(PesawatModel pesawat) {
-
         PesawatModel targetPesawat = pesawatDb.findById(pesawat.getId()).get();
+        targetPesawat.setMaskapai(pesawat.getMaskapai());
+        targetPesawat.setTanggal_dibuat(pesawat.getTanggal_dibuat());
+        targetPesawat.setTempat_dibuat(pesawat.getTempat_dibuat());
+        targetPesawat.setJenis_pesawat(pesawat.getJenis_pesawat());
 
-//        try{
-            targetPesawat.setMaskapai(pesawat.getMaskapai());
-            targetPesawat.setTanggal_dibuat(pesawat.getTanggal_dibuat());
-            targetPesawat.setTempat_dibuat(pesawat.getTempat_dibuat());
-            targetPesawat.setJenis_pesawat(pesawat.getJenis_pesawat());
-
-//            String no_seri = generateNoSeri(pesawat);
-//            pesawat.setNomor_seri(no_seri);
-
-            pesawatDb.save(targetPesawat);
-            return targetPesawat;
-
-//        }catch (NullPointerException nullException){
-//            return null;
-//        }
+        pesawatDb.save(targetPesawat);
+        return targetPesawat;
     }
 
     @Override
