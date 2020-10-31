@@ -5,32 +5,41 @@
     <title>Daftar Pesawat Tua</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <style>
+        h2{ text-align: center;}
+    </style>
 </head>
 
 <body>
 <nav th:replace="fragments/fragment :: navbar('Daftar Pesawat Tua')"></nav>
 <br>
-<h2>Daftar Pesawat Tua</h2>
-<table class="table">
-    <thead>
-    <tr>
-        <th>No</th>
-        <th>Nomor Seri</th>
-        <th>Jenis</th>
-        <th>Tipe</th>
-        <th>Usia</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="pesawat, iterationStatus: ${listPesawat}"
-        th:style="'font-weight:light;'">
-        <td th:text="${iterationStatus.count}"></td>
-        <td th:text="${pesawat.nomor_seri}"></td>
-        <td th:text="${pesawat.jenis_pesawat}"></td>
-        <td th:text="${pesawat.tipe.nama}"></td>
-        <td th:text="${pesawat.usia}"></td>
-    </tr>
-    </tbody>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col" style="margin-right: 2vw">
+            <h2>Daftar Pesawat Tua</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nomor Seri</th>
+                    <th>Jenis</th>
+                    <th>Tipe</th>
+                    <th>Usia</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pesawat, iterationStatus: ${listPesawat}"
+                    th:style="'font-weight:light;'">
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${pesawat.nomor_seri}"></td>
+                    <td th:text="${pesawat.jenis_pesawat}"></td>
+                    <td th:text="${pesawat.tipe.nama}"></td>
+                    <td th:text="${pesawat.usia}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

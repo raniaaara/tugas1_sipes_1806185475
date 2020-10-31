@@ -54,23 +54,24 @@ public class PenerbanganController{
         return "form-add-penerbangan";
     }
 
-
     @PostMapping("/penerbangan/tambah")
-    public String submitTambahPenerbangan(
-            @ModelAttribute PenerbanganModel penerbangan, Model model
+    public String add_penerbangan_submit(
+            @ModelAttribute PenerbanganModel penerbangan,
+            Model model
     ){
         if (penerbangan.getWaktu_berangkat() == null){
             penerbangan.setWaktu_berangkat(LocalDateTime.now());
         }
-//        Boolean checkNo = penerbanganService.getListNomorPenerbangan().contains(penerbangan.getNomor_penerbangan());
-//        if((penerbangan.getNomor_penerbangan().length() != 16) || checkNo) {
-//            model.addAttribute("msg", "Nomor penerbangan harus berjumlah 16 digit dan unik");
-//            return "form-add-penerbangan";
-//        }
+
+        Boolean checkNo = penerbanganService.getListNomorPenerbangan().contains(penerbangan.getNomor_penerbangan());
+        if((penerbangan.getNomor_penerbangan().length() != 16) || checkNo) {
+            model.addAttribute("warning", "Nomor penerbangan harus berjumlah 16 digit dan unik");
+            return "form-add-penerbangan";
+        }
 
         penerbanganService.addPenerbangan(penerbangan);
 
-        model.addAttribute("msg", "");
+        model.addAttribute("warning", "");
         model.addAttribute("penerbangan", penerbangan);
 
         return "add-penerbangan";

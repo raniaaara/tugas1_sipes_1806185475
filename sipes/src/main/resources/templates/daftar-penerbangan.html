@@ -15,38 +15,41 @@
 <nav th:replace="fragments/fragment :: navbar('Daftar Penerbangan')"></nav>
 <br>
 <a class="btn btn-primary" th:href="@{/penerbangan/tambah}">Add Penerbangan</a>
-<h2>Daftar Penerbangan</h2>
-<table class="table">
-    <thead>
-    <tr>
-        <th>No</th>
-        <th>Kode Penerbangan</th>
-        <th>Bandara Asal</th>
-        <th>Bandara Tujuan</th>
-        <th>Waktu Berangkat</th>
-        <th>Aksi</th>
-    </tr>
-    </thead>
+<div class="container">
+    <div class="row">
+        <div class="col" style="margin-right: 2vw">
+            <h2>Daftar Penerbangan</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kode Penerbangan</th>
+                    <th>Bandara Asal</th>
+                    <th>Bandara Tujuan</th>
+                    <th>Waktu Berangkat</th>
+                    <th>Aksi</th>
+                </tr>
+                </thead>
 
-    <tbody>
-    <tr th:each="penerbangan, iterationStatus: ${listPenerbangan}">
-         <td th:text="${iterationStatus.count}"></td>
-<!--        <td th:text="${penerbangan.id}"></td>-->
-        <td th:text="${penerbangan.nomor_penerbangan}"></td>
-        <td th:text="${penerbangan.kode_bandara_asal}"></td>
-        <td th:text="${penerbangan.kode_bandara_tujuan}"></td>
-        <td th:text="${penerbangan.waktu_berangkat}"></td>
+                <tbody>
+                <tr th:each="penerbangan, iterationStatus: ${listPenerbangan}">
+                     <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${penerbangan.nomor_penerbangan}"></td>
+                    <td th:text="${penerbangan.kode_bandara_asal}"></td>
+                    <td th:text="${penerbangan.kode_bandara_tujuan}"></td>
+                    <td th:text="${penerbangan.waktu_berangkat}"></td>
 
-        <td>
-            <a th:href="@{/penerbangan/} + ${penerbangan.id}" class="btn btn-outline-primary">View</a>
-            <a th:href="@{/penerbangan/ubah/} + ${penerbangan.id}" class="btn btn-outline-primary">Change</a>
-            <a th:href="@{/penerbangan/hapus/} + ${penerbangan.id}" class="btn btn-outline-danger">Delete</a>
-        </td>
+                    <td>
+                        <a th:href="@{/penerbangan/} + ${penerbangan.id}" class="btn btn-outline-primary">View</a>
+                        <a th:href="@{/penerbangan/ubah/} + ${penerbangan.id}" class="btn btn-outline-primary">Change</a>
+                        <a th:href="@{/penerbangan/hapus/} + ${penerbangan.id}" class="btn btn-outline-danger">Delete</a>
+                    </td>
 
-    </tr>
-
-    </tbody>
-
-</table>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

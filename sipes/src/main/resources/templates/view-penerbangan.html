@@ -13,24 +13,30 @@
 
 <nav th:replace="fragments/fragment :: navbar('View Detail Penerbangan')"></nav>
 <br>
-<h2>Detail Penerbangan</h2>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Nomor Penerbangan</th>
-        <th>Bandara Asal</th>
-        <th>Bandara Tujuan</th>
-        <th>Waktu Berangkat</th>
-        <th>Nomor Seri Pesawat</th>
-    </tr>
-    </thead>
-    <tbody>
-    <td th:text="${penerbangan.nomor_penerbangan}"></td>
-    <td th:text="${penerbangan.kode_bandara_asal}"></td>
-    <td th:text="${penerbangan.kode_bandara_tujuan}"></td>
-    <td th:text="${penerbangan.waktu_berangkat}"></td>
-    <td th:text="${penerbangan.pesawat == null} ? 'Belum di-assign pesawat' : ${penerbangan.pesawat.nomor_seri}"></td>
-    </tbody>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col" style="margin-right: 2vw">
+            <h2>Detail Penerbangan</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nomor Penerbangan</th>
+                    <th>Bandara Asal</th>
+                    <th>Bandara Tujuan</th>
+                    <th>Waktu Berangkat</th>
+                    <th>Nomor Seri Pesawat</th>
+                </tr>
+                </thead>
+                <tbody>
+                <td th:text="${penerbangan.nomor_penerbangan}"></td>
+                <td th:text="${penerbangan.kode_bandara_asal}"></td>
+                <td th:text="${penerbangan.kode_bandara_tujuan}"></td>
+                <td th:text="${penerbangan.waktu_berangkat}"></td>
+                <td th:text="${penerbangan.pesawat == null} ? 'Belum di-assign pesawat' : ${penerbangan.pesawat.nomor_seri}"></td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

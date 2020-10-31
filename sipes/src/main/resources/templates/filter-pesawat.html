@@ -35,41 +35,46 @@
     <br><br>
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
-
-<table class="table">
-    <thead>
-    <tr>
-        <th>No</th>
-        <th>Nomor Seri</th>
-        <th>Jenis</th>
-        <th>Tipe</th>
-        <th>Maskapai</th>
-        <th>Nomor Penerbangan</th>
-        <th>Teknisi</th>
-    </tr>
-    </thead>
-    <tbody>
-    <div th:if="${containsObject}">
-        <tr th:each="pesawat, iterationStatus: ${listPesawatHasil}">
-            <td th:text="${iterationStatus.count}"></td>
-            <td th:text="${pesawat.nomor_seri}"></td>
-            <td th:text="${pesawat.jenis_pesawat}"></td>
-            <td th:text="${pesawat.tipe.nama}"></td>
-            <td th:text="${pesawat.maskapai}"></td>
-            <td>
-                <p th:each="p : ${pesawat.listPenerbangan}">
-                    <span th:text="${p.nomor_penerbangan}"></span>
-                </p>
-            </td>
-<!--            <td th:text="${pesawat.maskapai}"></td>-->
-            <td>
-                <p th:each="t : ${pesawat.listTeknisi}">
-                    <span th:text="${t.nama}"></span>
-                </p>
-            </td>
-        </tr>
+<div class="container">
+    <div class="row">
+        <div class="col" style="margin-right: 2vw">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nomor Seri</th>
+                    <th>Jenis</th>
+                    <th>Tipe</th>
+                    <th>Maskapai</th>
+                    <th>Nomor Penerbangan</th>
+                    <th>Teknisi</th>
+                </tr>
+                </thead>
+                <tbody>
+                <div th:if="${containsObject}">
+                    <tr th:each="pesawat, iterationStatus: ${listPesawatHasil}">
+                        <td th:text="${iterationStatus.count}"></td>
+                        <td th:text="${pesawat.nomor_seri}"></td>
+                        <td th:text="${pesawat.jenis_pesawat}"></td>
+                        <td th:text="${pesawat.tipe.nama}"></td>
+                        <td th:text="${pesawat.maskapai}"></td>
+                        <td>
+                            <p th:each="p : ${pesawat.listPenerbangan}">
+                                <span th:text="${p.nomor_penerbangan}"></span>
+                            </p>
+                        </td>
+            <!--            <td th:text="${pesawat.maskapai}"></td>-->
+                        <td>
+                            <p th:each="t : ${pesawat.listTeknisi}">
+                                <span th:text="${t.nama}"></span>
+                            </p>
+                        </td>
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+        </div>
     </div>
-    </tbody>
-</table>
+</div>
 </body>
 </html>

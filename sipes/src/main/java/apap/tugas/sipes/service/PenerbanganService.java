@@ -12,4 +12,5 @@ public interface PenerbanganService {
     List<String> getListNomorPenerbangan();
     PenerbanganModel updatePenerbangan(PenerbanganModel penerbangan);
     void deletePenerbangan(PenerbanganModel penerbangan);
+    void assignPesawat(PenerbanganModel penerbangan, PesawatModel pesawat);
 }

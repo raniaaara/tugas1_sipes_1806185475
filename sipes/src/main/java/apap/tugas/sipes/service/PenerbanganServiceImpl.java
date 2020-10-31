@@ -55,4 +55,11 @@ public class PenerbanganServiceImpl implements PenerbanganService {
     public void deletePenerbangan(PenerbanganModel penerbangan) {
         penerbanganDb.delete(penerbangan);
     }
+
+    @Override
+    public void assignPesawat(PenerbanganModel penerbangan, PesawatModel pesawat){
+        PenerbanganModel targetPenerbangan = penerbanganDb.findById(penerbangan.getId()).get();
+        targetPenerbangan.setPesawat(pesawat);
+        penerbanganDb.save(targetPenerbangan);
+    }
 }

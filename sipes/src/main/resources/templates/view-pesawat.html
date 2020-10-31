@@ -6,7 +6,7 @@
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
     <style>
-        h2, h4{ text-align: center;}
+        h2, h4, p{ text-align: center;}
     </style>
     </head>
 
@@ -93,6 +93,8 @@
                 </tr>
                 </tbody>
             </table>
+
+            <p th:text="${msg}"></p>
         </div>
     </div>
 </div>

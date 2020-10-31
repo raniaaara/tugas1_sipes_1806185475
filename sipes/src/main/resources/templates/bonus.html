@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bonus</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <style>
+        h2, h4, p{ text-align: center;}
+    </style>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar('Bonus')"></nav>
+<table class="table">
+    <thead>
+    <tr>
+        <th>No Seri</th>
+        <th>Jenis Pesawat</th>
+        <th>Maskapai</th>
+        <th>Jumlah Teknisi</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pesawat, iterationStatus: ${listPesawat}">
+        <td th:text="${pesawat.nomor_seri}"></td>
+        <td th:text="${pesawat.jenis_pesawat}"></td>
+        <td th:text="${pesawat.maskapai}"></td>
+        <td th:text="*{banyakTeknisi[__${iterationStatus.index}__]}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

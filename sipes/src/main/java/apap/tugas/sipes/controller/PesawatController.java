@@ -128,8 +128,10 @@ public class PesawatController{
             model.addAttribute("listTeknisi", listTeknisi);
             model.addAttribute("dropdownPenerbangan", dropdownPenerbangan);
             model.addAttribute("listPenerbangan", listPenerbangan);
+            model.addAttribute("msg", "");
 
-            return "view-pesawat";
+
+        return "view-pesawat";
     }
 
     @PostMapping("/pesawat/{id}/tambah-penerbangan")
@@ -140,19 +142,16 @@ public class PesawatController{
         PesawatModel pesawat = pesawatService.getPesawatById(id);
         List<TeknisiModel> listTeknisi = pesawat.getListTeknisi();
         List<PenerbanganModel> dropdownPenerbangan = penerbanganService.getListPenerbangan();
-
         PenerbanganModel penerbangan = penerbanganService.getPenerbanganById(penerbanganId);
-        System.out.println(penerbangan.getNomor_penerbangan());
-        penerbangan.setPesawat(pesawat);
+
+        penerbanganService.assignPesawat(penerbangan,pesawat);
         List<PenerbanganModel> listPenerbangan = pesawat.getListPenerbangan();
-        System.out.println(penerbangan.getPesawat().getNomor_seri());
-        System.out.println(listPenerbangan.size());
-//        penerbangan.getPesawat().getMaskapai();
 
         model.addAttribute("listTeknisi", listTeknisi);
         model.addAttribute("dropdownPenerbangan", dropdownPenerbangan);
         model.addAttribute("listPenerbangan",listPenerbangan );
         model.addAttribute("pesawat", pesawat);
+        model.addAttribute("msg", "Penerbangan berhasil di-assign");
 
         return "view-pesawat";
     }
@@ -251,6 +250,19 @@ public class PesawatController{
             model.addAttribute("listPesawatHasil", listPesawatHasil);
         }
         return "filter-pesawat";
+    }
+
+    @GetMapping("/bonus")
+    private String bonus(Model model) {
+        List<PesawatModel> listPesawat = pesawatService.getListPesawat();
+        List<Integer> jumlahTeknisi = new ArrayList<Integer>();
+        for (PesawatModel pesawat: listPesawat){
+            int teknisiPesawat = pesawat.getListTeknisi().size();
+            jumlahTeknisi.add(teknisiPesawat);
+        }
+        model.addAttribute("listPesawat", listPesawat);
+        model.addAttribute("banyakTeknisi", jumlahTeknisi);
+        return "bonus";
     }
 
 }
