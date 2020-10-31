@@ -8,16 +8,30 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
-<body>
+<!--<body>-->
 
-<nav th:replace="fragments/fragment :: navbar('Home')"></nav>
-<div class="jumbotron bg-white">
-<h2>Selamat Datang di SIPESAWAT!</h2>
-<a class="btn btn-primary" th:href="@{/pesawat}">Pesawat</a>
-<a class="btn btn-primary" th:href="@{/penerbangan}">Penerbangan</a>
-<a class="btn btn-primary" th:href="@{/pesawat/pesawat-tua}">Cari</a>
-<a class="btn btn-primary" th:href="@{/pesawat/filter}">Filter</a>
+<!--<nav th:replace="fragments/fragment :: navbar('Home')"></nav>-->
+<!--<div class="jumbotron bg-white">-->
+<!--<h2>Selamat Datang di SIPESAWAT!</h2>-->
+<!--<a class="btn btn-primary" th:href="@{/pesawat}">Pesawat</a>-->
+<!--<a class="btn btn-primary" th:href="@{/penerbangan}">Penerbangan</a>-->
+<!--<a class="btn btn-primary" th:href="@{/pesawat/pesawat-tua}">Cari</a>-->
+<!--<a class="btn btn-primary" th:href="@{/pesawat/filter}">Filter</a>-->
+<!--    <a class="btn btn-primary" th:href="@{/bonus}">Bonus</a>-->
+<!--</div>-->
+<!--</body>-->
+
+
+<body>
+<div class="jumbotron bg-white container mx-auto text-center">
+    <h1>Selamat datang di SIPESAWAT!</h1>
+    <br><br>
+    <h5>Daftar Fitur:</h5>
+    <a class="btn btn-primary" th:href="@{/pesawat}">Pesawat</a>
+    <a class="btn btn-primary" th:href="@{/penerbangan}">Penerbangan</a>
+    <a class="btn btn-primary" th:href="@{/pesawat/pesawat-tua}">Cari</a>
+    <a class="btn btn-primary" th:href="@{/pesawat/filter}">Filter</a>
+    <a class="btn btn-primary" th:href="@{/bonus}">Bonus</a>
 </div>
 </body>
-
 </html>

@@ -14,10 +14,11 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar('Daftar Penerbangan')"></nav>
 <br>
-<a class="btn btn-primary" th:href="@{/penerbangan/tambah}">Add Penerbangan</a>
 <div class="container">
     <div class="row">
         <div class="col" style="margin-right: 2vw">
+            <a class="btn btn-primary" th:href="@{/penerbangan/tambah}">Add Penerbangan</a>
+
             <h2>Daftar Penerbangan</h2>
             <table class="table">
                 <thead>

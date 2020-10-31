@@ -12,10 +12,11 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar('Daftar Pesawat')"></nav>
 <br>
-<a class="btn btn-primary" th:href="@{/pesawat/tambah}">Add Pesawat</a>
 <div class="container">
     <div class="row">
         <div class="col" style="margin-right: 2vw">
+            <a class="btn btn-primary" th:href="@{/pesawat/tambah}">Add Pesawat</a>
+
             <h2>Daftar Pesawat</h2>
             <table class="table">
                 <thead>

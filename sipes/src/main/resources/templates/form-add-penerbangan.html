@@ -6,6 +6,9 @@
     <title>Form Add Penerbangan</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <style>
+        h6{ text-align: center;}
+    </style>
 </head>
 
 <body>
@@ -14,6 +17,7 @@
 
 <div class="card m-5 p-3">
     <form th:action="@{/penerbangan/tambah}" th:object="${penerbangan}" method="POST">
+        <h6 th:text="${warning}"></h6>
         Nomor Penerbangan : <br>
         <input class="form-control" type="text" th:field="*{nomor_penerbangan}" required/>
         <br><br>
@@ -29,11 +33,9 @@
         Waktu Berangkat : <br>
         <input type="datetime-local" th:field="*{waktu_berangkat}" class="form-control"/>
         <br><br>
-
         <br><br>
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>
-    <h2 th:text="${warning}"></h2>
 
 </div>
 </body>

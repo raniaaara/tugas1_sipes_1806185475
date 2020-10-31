@@ -62,10 +62,10 @@ public class PenerbanganController{
         if (penerbangan.getWaktu_berangkat() == null){
             penerbangan.setWaktu_berangkat(LocalDateTime.now());
         }
-
         Boolean checkNo = penerbanganService.getListNomorPenerbangan().contains(penerbangan.getNomor_penerbangan());
         if((penerbangan.getNomor_penerbangan().length() != 16) || checkNo) {
             model.addAttribute("warning", "Nomor penerbangan harus berjumlah 16 digit dan unik");
+            model.addAttribute("penerbangan", penerbangan);
             return "form-add-penerbangan";
         }
 
