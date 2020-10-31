@@ -13,7 +13,7 @@
 <nav th:replace="fragments/fragment :: navbar('Form Add Pesawat')"></nav>
 
 <div class="card m-5 p-3">
-    <form th:action="@{/pesawat/add}" th:object="${pesawat}" method="POST">
+    <form th:action="@{/pesawat/tambah}" th:object="${pesawat}" method="POST">
         Maskapai : <br>
         <input class="form-control" type="text" th:field="*{maskapai}"/>
         <br><br>
@@ -57,10 +57,10 @@
                 </td>
             </tr>
         </table>
-        <button type="submit" class="btn btn-outline-primary" name="addteknisi">Add Teknisi</button>
+        <button type="submit" class="btn btn-outline-primary" name="addTeknisi">Add Teknisi</button>
 
         <br><br>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
 
 </div>

@@ -45,6 +45,10 @@ public class PesawatModel implements Serializable {
     @Column(name = "jenis_pesawat", nullable = false)
     private String jenis_pesawat;
 
+    @Size(max = 255)
+    @Column(name = "usia")
+    private String usia;
+
 //    Relationship
     @OneToMany(mappedBy = "pesawat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PenerbanganModel> listPenerbangan;
@@ -63,7 +67,6 @@ public class PesawatModel implements Serializable {
             joinColumns = @JoinColumn(name = "id_pesawat"),
             inverseJoinColumns = @JoinColumn(name = "id_teknisi")
     )
-    
     public List<TeknisiModel> listTeknisi;
 
     public List<TeknisiModel> getListTeknisi() {
@@ -125,6 +128,10 @@ public class PesawatModel implements Serializable {
     public String getJenis_pesawat() {
         return jenis_pesawat;
     }
+
+    public String getUsia() { return usia; }
+
+    public void setUsia(String usia) { this.usia = usia; }
 
     public void setJenis_pesawat(String jenis_pesawat) {
         this.jenis_pesawat = jenis_pesawat;

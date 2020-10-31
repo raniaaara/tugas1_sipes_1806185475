@@ -85,4 +85,9 @@ public class PesawatServiceImpl implements PesawatService {
 
         return no_seri;
     }
+
+//    @Override
+//    public void deletePesawat(PesawatModel pesawat) {
+//        pesawatDb.delete(pesawat);
+//    }
 }

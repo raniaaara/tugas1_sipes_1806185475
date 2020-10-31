@@ -5,6 +5,9 @@
     <title>View Detail Penerbangan</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <style>
+        h2{ text-align: center;}
+    </style>
 </head>
 <body>
 
@@ -18,7 +21,7 @@
         <th>Bandara Asal</th>
         <th>Bandara Tujuan</th>
         <th>Waktu Berangkat</th>
-<!--        <th>Nomor Seri Pesawat</th>-->
+        <th>Nomor Seri Pesawat</th>
     </tr>
     </thead>
     <tbody>
@@ -26,7 +29,7 @@
     <td th:text="${penerbangan.kode_bandara_asal}"></td>
     <td th:text="${penerbangan.kode_bandara_tujuan}"></td>
     <td th:text="${penerbangan.waktu_berangkat}"></td>
-<!--    <td th:text="${penerbangan.id}"></td>-->
+    <td th:text="${penerbangan.pesawat == null} ? 'Belum di-assign pesawat' : ${penerbangan.pesawat.nomor_seri}"></td>
     </tbody>
 </table>
 </body>

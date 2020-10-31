@@ -106,13 +106,14 @@ public class PenerbanganController{
         return "update-penerbangan";
     }
 
-//    @GetMapping("/penerbangan/hapus/{id}")
-//    public String hapusPenerbangan(
-//            @PathVariable(value="id") Long id, Model model
-//    ){
-//        PenerbanganModel p = penerbanganService.getPenerbanganById(id);
-//        penerbanganService.hapusPenerbangan(p);
-//        model.addAttribute("penerbangan", p);
-//        return listPenerbangan(model);
-//    }
+    @GetMapping("/penerbangan/hapus/{id}")
+    public String hapusPenerbangan(
+            @PathVariable Long id,
+            Model model
+    ){
+        PenerbanganModel penerbangan = penerbanganService.getPenerbanganById(id);
+        penerbanganService.deletePenerbangan(penerbangan);
+        model.addAttribute("penerbangan", penerbangan);
+        return "delete-penerbangan";
+    }
 }

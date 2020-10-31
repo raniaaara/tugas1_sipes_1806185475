@@ -11,7 +11,7 @@
 <br>
 
 <div class="card m-5 p-3">
-    <form th:action="@{/pesawat/update}" th:object="${pesawat}" method="POST">
+    <form th:action="@{/pesawat/ubah}" th:object="${pesawat}" method="POST">
         <input class="form-control" type="hidden" th:field="*{id}"/>
         <input class="form-control" type="hidden" th:field="*{tipe.id}"/>
 

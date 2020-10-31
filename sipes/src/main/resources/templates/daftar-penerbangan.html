@@ -6,6 +6,9 @@
     <title>Daftar Penerbangan</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <style>
+        h2{ text-align: center;}
+    </style>
 </head>
 
 <body>
@@ -37,7 +40,7 @@
         <td>
             <a th:href="@{/penerbangan/} + ${penerbangan.id}" class="btn btn-outline-primary">View</a>
             <a th:href="@{/penerbangan/ubah/} + ${penerbangan.id}" class="btn btn-outline-primary">Change</a>
-            <a th:href="@{/}" class="btn btn-outline-danger">Delete</a>
+            <a th:href="@{/penerbangan/hapus/} + ${penerbangan.id}" class="btn btn-outline-danger">Delete</a>
         </td>
 
     </tr>
